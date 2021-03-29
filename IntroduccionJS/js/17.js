@@ -1,3 +1,16 @@
+///Arrow functions
+/*const sumar = function(n1,n2){
+    console.log(n1 + n2)
+}*/
+const sumar = (n1,n2) => console.log(n1 + n2)
+
+sumar(5,12);
+
+const aprendiendo = (tecnologia) =>{
+    console.log(`Aprendiendo ${tecnologia}`)
+}
+aprendiendo('JavaScript')
+
 //Array methods
 
 const meses = ['Enero','Febrero','Marzo','Abril','Mayo']
@@ -14,39 +27,21 @@ const carrito = [
 
 //forEach -> Se va a ejecutar al menos 1 vez por cada elementos del arreglo
 
-meses.forEach(function(mes){
+meses.forEach(mes => {
     if(mes == 'Marzo'){
         console.log('Marzo si existe')
     }
 })
 
-//Includes
-
-let resultado = meses.includes('Marzo') //Includes nos muestra true o false si encuentra lo indicado en la cadena de texto
-// const resultado2 = carrito.includes('teclado') //Includes no muestra si es un objeto en un arreglo
-
+let resultado
 //**Some -> Ideal para buscar en arreglo de objetos */
-
-resultado = carrito.some(function(producto){
-    return producto.nombre === 'notebook'
-})
-console.log(resultado)
+resultado = carrito.some(p => p.nombre === 'notebook') //--> El return se da implicito
 
 //**Reduce -> Para sumar dentro del array con objetos*/
-
-resultado = carrito.reduce(function(total, producto){
-    return total +producto.precio
-}, 0)
-
-
+resultado = carrito.reduce((total, producto) => total + producto.precio, 0)
 
 //**Filter -> para filtrar resultados de un array con objetos */
+resultado = carrito.filter(producto => producto.precio < 500)
 
-resultado = carrito.filter(function(producto){
-    return producto.precio <500
-})
-resultado = carrito.filter(function(producto){
-    return producto.nombre === 'teclado' 
-})
-
+resultado = carrito.filter(producto => producto.nombre !== 'teclado')
 console.log(resultado)
